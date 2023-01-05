@@ -8,6 +8,8 @@ class Users extends Component {
             return (
                 <ul>
                     {this.props.users.map((user) => <User
+                        onDelete={this.props.delete}
+                        add={this.props.edit}
                         key={user.id}
                         name={user.name}
                         lastName={user.lastName}

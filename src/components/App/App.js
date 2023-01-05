@@ -12,16 +12,16 @@ class App extends Component {
             users: [
                 {
                     id: 1,
-                    name: 'Sardor',
-                    lastName: 'Ahadilloyev',
+                    name: 'Cristiano',
+                    lastName: 'Ronaldo',
                     bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, omnis.",
                     age: 18,
                     isMarried: false,
                 },
                 {
                     id: 2,
-                    name: 'Sanjar',
-                    lastName: 'Sattorov',
+                    name: 'Lionel',
+                    lastName: 'Messi',
                     bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, omnis.",
                     age: 43,
                     isMarried: true,
@@ -30,6 +30,8 @@ class App extends Component {
         }
 
         this.addUser = this.addUser.bind(this);
+        this.deleteUser = this.deleteUser.bind(this);
+        this.editUser = this.editUser.bind(this);
     }
 
     render() {
@@ -37,7 +39,7 @@ class App extends Component {
             <div>
                 <Header title="List of users" />
                 <main>
-                    <Users users={this.state.users} />
+                    <Users users={this.state.users} edit={this.editUser} delete={this.deleteUser} />
                 </main>
                 <aside>
                     <AddUser add={this.addUser} />
@@ -46,6 +48,18 @@ class App extends Component {
         )
     }
 
+    deleteUser(id) {
+        this.setState({ users: this.state.users.filter(el => el.id !== id) })
+    }
+
+    editUser(user) {
+        let allUsers = this.state.users;
+        allUsers[user.id - 1] = user;
+
+        this.setState({ users: [] }, () => {
+            this.setState({users: [...allUsers]})
+        })
+    }
 
     addUser(user) {
         const id = this.state.users.length + 1;

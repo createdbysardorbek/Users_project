@@ -2,4 +2,17 @@
     margin-bottom: 50px;
     padding: 20px;
     background-color: #3e8fa0;
+
+    form {
+
+        textarea,
+        input,
+        button {
+            background: #134b57;
+        }
+    }
+
+    button:hover {
+        transform: scale(1.01);
+    }
 }
