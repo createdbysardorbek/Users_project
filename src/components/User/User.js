@@ -18,6 +18,7 @@ class User extends Component {
                 <IoCloseCircleSharp onClick={() => this.props.onDelete(this.props.id)} className="delete-icon" />
                 <IoHammerSharp onClick={() => { this.setState({ editForm: !this.state.editForm })}} className="edit-icon" />
                 <h1>{this.props.name} {this.props.lastName}</h1>
+                <img src={this.props.avatar}/>
                 <h2>{this.props.bio}</h2>
                 <h3>{this.props.age}</h3>
                 <h4>{this.props.isMarried ? "Married :)" : "Unmarried :("}</h4>

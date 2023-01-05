@@ -3,31 +3,25 @@ import './App.scss'
 import Header from "../Header/Header";
 import Users from "../Users/Users";
 import AddUser from "../AddUser/AddUser";
+import axios from "axios";
+
+const baseUrl = 'https://reqres.in/api/users?page=1';
 
 class App extends Component {
 
     constructor(props) {
         super(props)
+
+        axios.get(baseUrl).then(res=>{
+            this.setState({users: res.data.data})
+            console.log(res.data.data);
+        })
+
         this.state = {
-            users: [
-                {
-                    id: 1,
-                    name: 'Cristiano',
-                    lastName: 'Ronaldo',
-                    bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, omnis.",
-                    age: 18,
-                    isMarried: false,
-                },
-                {
-                    id: 2,
-                    name: 'Lionel',
-                    lastName: 'Messi',
-                    bio: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, omnis.",
-                    age: 43,
-                    isMarried: true,
-                }
-            ]
+            users: []
         }
+
+        console.log(this.state.users);
 
         this.addUser = this.addUser.bind(this);
         this.deleteUser = this.deleteUser.bind(this);
@@ -57,7 +51,7 @@ class App extends Component {
         allUsers[user.id - 1] = user;
 
         this.setState({ users: [] }, () => {
-            this.setState({users: [...allUsers]})
+            this.setState({ users: [...allUsers] })
         })
     }
 

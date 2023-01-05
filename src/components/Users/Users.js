@@ -11,10 +11,11 @@ class Users extends Component {
                         onDelete={this.props.delete}
                         add={this.props.edit}
                         key={user.id}
-                        name={user.name}
-                        lastName={user.lastName}
-                        bio={user.bio} age={user.age}
+                        name={user.first_name}
+                        lastName={user.last_name}
+                        bio={user.bio} age={user.email}
                         id={user.id}
+                        avatar={user.avatar}
                         isMarried={user.isMarried} />)}
                 </ul>
             )

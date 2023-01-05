@@ -9,8 +9,8 @@ class AddUser extends Component {
         super(props)
 
         this.state = {
-            name: '',
-            lastName: '',
+            first_name: '',
+            last_name: '',
             age: 1,
             bio: '',
             isMarried: false
@@ -20,8 +20,8 @@ class AddUser extends Component {
     render() {
         return (
             <form ref={(el) => this.myForm = el}>
-                <input placeholder="Name" onChange={(e) => this.setState({ name: e.target.value })} />
-                <input placeholder="Surname" onChange={(e) => this.setState({ lastName: e.target.value })} />
+                <input placeholder="Name" onChange={(e) => this.setState({ first_name: e.target.value })} />
+                <input placeholder="Surname" onChange={(e) => this.setState({ last_name: e.target.value })} />
                 <textarea placeholder="Bio" onChange={(e) => this.setState({ bio: e.target.value })}></textarea>
                 <input placeholder="Age" onChange={(e) => this.setState({ age: e.target.value })} />
                 <label htmlFor="isMarried" >Are you married?</label>
@@ -29,8 +29,8 @@ class AddUser extends Component {
                 <button type="button" onClick={() => {
                     this.myForm.reset();
                     this.userAdd = {
-                        name: this.state.name,
-                        lastName: this.state.lastName,
+                        first_name: this.state.first_name,
+                        last_name: this.state.last_name,
                         bio: this.state.bio,
                         age: this.state.age,
                         isMarried: this.state.isMarried,
